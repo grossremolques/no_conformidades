@@ -1,0 +1,105 @@
+<form class="row needs-validation g-1 form" novalidate>
+    <h3>Fase: Declarativa</h3>
+    <h5>Difiniciones</h5>
+    <div class="row">
+
+    
+    <div class='col-12'>
+        <label for='tipo_desvio' class='col-form-label col-form-label-sm'>Tipo de desvío<span class='text-danger'> *</span></label>
+        <select class='form-select form-select-sm' onchange="" id='tipo_desvio' required>
+        </select>
+    </div>
+    <div class='col-12'>
+        <label for='documento' class='col-form-label col-form-label-sm'>Documento<span class='text-danger'> *</span></label>
+        <select class='form-select form-select-sm ' id='documento'></select>
+    </div>
+    <div class='col-12'>
+        <label for='pieza' class='col-form-label col-form-label-sm'>Pieza<span class='text-danger'>
+                *</span></label>
+        <input class='form-control form-control-sm' id='pieza' />
+    </div>
+    <div class='col-12'>
+        <label for='pnc' class='col-form-label col-form-label-sm'>Producto No Conforme <em>(Preformance de seguridad activa)</em> <span
+                class='text-danger'> *</span></label>
+        <select class='form-select form-select-sm' id='pnc'></select>
+    </div>
+    <div class='col-12'>
+        <label for='producto' class='col-form-label col-form-label-sm'>Producto<span
+                class='text-danger'>
+                *</span></label>
+        <input class='form-control form-control-sm' id='producto' />
+    </div>
+    <div class='col-12'>
+        <label for='manufactura' class='col-form-label col-form-label-sm'>Manufactura<span
+                class='text-danger'> *</span></label>
+        <select class='form-select form-select-sm' id='manufactura'></select>
+    </div>
+    
+    <div class='col-12'>
+        <label for='proveedor' class='col-form-label col-form-label-sm'>Proveedor<span
+                class='text-danger'>
+                *</span></label>
+        <input class='form-control form-control-sm' type="number" id='proveedor' />
+    </div>
+    <div class='col-12'>
+        <label for='origen' class='col-form-label col-form-label-sm'>Origen<span class='text-danger'>
+                *</span></label>
+        <select class='form-select form-select-sm' id='origen' required></select>
+    </div>
+    <div class='col-12'>
+        <label for='cliente' class='col-form-label col-form-label-sm'>Cliente<span class='text-danger'>
+                *</span></label>
+        <input class='form-control form-control-sm' type="number" id='cliente'/>
+    </div>
+    <div class='col-12'>
+        <label for='trazabilidad' class='col-form-label col-form-label-sm'>Trazabilidad<span
+                class='text-danger'> *</span></label>
+        <input class='form-control form-control-sm' id='trazabilidad' />
+    </div>
+    <div class='col-12'>
+        <label for='desvio' class='col-form-label col-form-label-sm'>Desvío<span class='text-danger'>
+                *</span></label>
+        <textarea class='form-control form-control-sm' id='desvio' required></textarea>
+    </div>
+    <div class='col-12'>
+        <label for='contencion' class='col-form-label col-form-label-sm'>Contención</label>
+        <textarea class='form-control form-control-sm' id='contencion'></textarea>
+    </div>
+    <div class='col-12'>
+        <label for='fecha_prog_at' class='col-form-label col-form-label-sm'>Fecha programada de
+            atención<span class='text-danger'> *</span></label>
+        <input class='form-control form-control-sm' type="date" id='fecha_prog_at'/>
+    </div>
+    <div class='col-12'>
+        <label for='id_ot' class='col-form-label col-form-label-sm'>ID Orden de trabajo<span
+                class='text-danger'> *</span></label>
+        <input class='form-control form-control-sm' type="number" id='id_ot' />
+    </div>
+    <div class="row g-1">
+        <h4>Datos de quien genera la NC</h4>
+        <div class='col-12'>
+            <label for='registrado_por' class='col-form-label col-form-label-sm'>Registrado por<span
+                    class='text-danger'> *</span></label>
+            <input class="form-control form-control-sm" list="datalista_registrado_por" id="registrado_por">
+            <datalist id="datalista_registrado_por">
+
+            </datalist>
+        </div>
+        <div class='col-12'>
+            <label for='area' class='col-form-label col-form-label-sm'>Área<span class='text-danger'>
+                    *</span></label>
+            <select class='form-select form-select-sm' id='area'></select>
+        </div>
+        <div class='col-12'>
+            <label for='sector' class='col-form-label col-form-label-sm'>Sector<span class='text-danger'>
+                    *</span></label>
+            <select class='form-select form-select-sm' id='sector'></select>
+        </div>
+        <div class='col-12'>
+            <label for='subsector' class='col-form-label col-form-label-sm'>Subsector<span
+                    class='text-danger'>
+                    *</span></label>
+            <select class='form-select form-select-sm' id='subsector'></select>
+        </div>
+    </div>
+</form>
