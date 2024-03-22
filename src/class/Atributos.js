@@ -1,42 +1,43 @@
-const SheetAtributos = 'Otros Atributos!A1:ZZZ';
-const Atributos = {}
+const SheetAtributos = "Otros Atributos!A1:ZZZ";
+let Atributos;
 class Atributo {
-    static async getAtributos() {
-        try {
-            let response = await ApiGoogleSheet.getResponse(SheetAtributos);
-            response = response.result.values
-            response = arrayToObject(response);
-            Atributos.manufactura = response.map(item => item.manufactura).filter(item => {if(item) {return item}})
-            Atributos.pnc = response.map(item => item.pnc).filter(item => {if(item) {return item}})
-            Atributos.origen = response.map(item => item.origen).filter(item => {if(item) {return item}})
-            Atributos.si_no = response.map(item => item.si_no).filter(item => {if(item) {return item}})
-            Atributos.resultado_ef = response.map(item => item.resultado_ef).filter(item => {if(item) {return item}})
-            Atributos.tipo_desvio = response.map(item => item.tipo_desvio).filter(item => {if(item) {return item}})
-            Atributos.documento = response.map(item => item.documento).filter(item => {if(item) {return item}})
-        } catch (e) {
-            console.log(e)
-        }
+  static async getAtributos() {
+    try {
+      let response = await ApiGoogleSheet.getResponse(SheetAtributos);
+      if (response.status === 200) {
+        let data = arrayToObject(response.result.values);
+        Atributos = data;
+        return Atributos;
+      }
+    } catch (e) {
+      console.error("Error: ", e);
     }
-    static getAtributoList(atributo) {
-        return Atributos[atributo]
-    }
+  }
 }
 class UI_Atributo {
-
-    static loadAtributo(atributo,idInput) {
-        let input;
-        if(idInput) {
-            input = document.getElementById(idInput)
-        }
-        else {input = document.getElementById(atributo);}
-        input.innerHTML = '<option value="" selected></option>';
-        let listAtributo = Atributo.getAtributoList(atributo);
-        listAtributo.map(item => {
+  static loadAtributo(atributo, idInput) {
+    let input = idInput
+      ? document.getElementById(idInput)
+      : document.getElementById(atributo);
+    try {
+      let data = Atributos.map((item) => item[atributo]);
+      input.innerHTML = `
+      <option selected value="">Ninguno</option>
+      <option value="No aplica" disabled>No aplica</option>
+      `;
+      data.map((item) => {
+        if (item) {
+          if (item != "No aplica") {
             let option = document.createElement("option");
             let textNode = document.createTextNode(item);
             option.appendChild(textNode);
             option.value = item;
             input.appendChild(option);
-        })       
+          }
+        }
+      });
+    } catch (e) {
+      console.log(e);
     }
+  }
 }

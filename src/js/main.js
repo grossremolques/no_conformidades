@@ -1,6 +1,6 @@
 async function loadedWindow() {
     document.getElementById("instructionAccess").removeAttribute("hidden");
-    await UI.openForm()
+    await Declaracion.open()
   }
   function arrayToObject(arr) {
     // Obtenemos los encabezados del array
@@ -18,4 +18,15 @@ async function loadedWindow() {
       newData.push(obj); // Agregamos el objeto al nuevo array
     }
     return newData; // Devolvemos el nuevo array de objetos
+  }
+  function objectToArray(obj, arr) {
+    for (let i = 0; i < arr.length; i++) {
+      const item = arr[i];
+      if (obj.hasOwnProperty(item)) {
+        arr[i] = obj[item];
+      } else {
+        arr[i] = ""; // Cambia el contenido del array por un string vacío si el item no está presente
+      }
+    }
+    return arr;
   }

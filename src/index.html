@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="style.css" />
     <link rel="icon" href="./assets/icons/mejora-continua.png" type="image/png" />
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -25,16 +26,16 @@
                     aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarText">
-                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <div class="collapse navbar-collapse" id="navbarText"  hidden>
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0"  hidden>
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="#">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#" onclick="UI.openDeclaracion()">Agregar NC</a>
+                            <a class="nav-link" href="#" onclick="Declaracion.open()">Agregar NC</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Pricing</a>
+                            <a class="nav-link" href="#" onclick="Gestion.open()">Gestión</a>
                         </li>
                     </ul>
                 </div>
@@ -44,34 +45,21 @@
     <div class="container" id="interface">
        
     </div>
-    <div class="modal" tabindex="-1" id="myModalMessage">
+    <div class="modal" tabindex="-1" id="myModalMessage" data-bs-backdrop="static">
         <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Modal title</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <p>Modal body text goes here.</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                </div>
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Modal title</h5>
+              <button type="button" class="btn-close hide-close" data-bs-dismiss="modal" aria-label="Close" hidden></button>
             </div>
-        </div>
-    </div>
-    <div class="modal" tabindex="-1" id="myModalMessageloaded">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Procesando solicitud</h5>
-                </div>
-                <div class="modal-body">
-                    <p>Espere unos segundos ...</p>
-                </div>
+            <div class="modal-body" id="modalBody">
             </div>
+            <div class="modal-footer hide-close" hidden>
+              
+            </div>
+          </div>
         </div>
-    </div>
+      </div>
     <!--Add buttons to initiate auth sequence and sign out-->
     <div class="buttons-auth container group-auth-btn" style="margin-top: 500px;" hidden>
         <button class="btn btn-primary mx-2" id="authorize_button" onclick="handleAuthClick()">
@@ -93,14 +81,16 @@
     <script src="./class/UI.js"></script>
     <script src="./class/Atributos.js"></script>
     <script src="./class/ApiServices.js"></script>
-    <script src="./class/Areas.js"></script>
-    <script src="./class/Procesos.js"></script>
-    <script src="./class/Sectores.js"></script>
     <script src="./class/Usuarios.js"></script>
-    <script src="./class/Subsectores.js"></script>
+    <script src="./class/AreasEmpresariales.js"></script>
+    <script src="./class/Registro.js"></script>
+    <script src="./class/Dates.js"></script>
+    <script src="./class/Gestion.js"></script>
+    <script src="./class/Clientes.js"></script>
+    <script src="./class/Proveedores.js"></script>
+    <script src="./class/Email.js"></script>
     <script async defer src="https://apis.google.com/js/api.js" onload="gapiLoaded()"></script>
     <script async defer src="https://accounts.google.com/gsi/client" onload="gisLoaded()"></script>
 
 </body>
-
 </html>

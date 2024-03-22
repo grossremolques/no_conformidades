@@ -1,7 +1,70 @@
-.form {
-    max-width: 500px;
-    margin: auto;
+:root {
+  --purple: #af0b92;
+  --light-purple: #af0b9212;
 }
-.hidden {
-    display: none;
+.loader-container {
+  margin-top: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.loader {
+  text-align: center;
+}
+.show--fade {
+  animation-duration: 2s;
+  animation-name: opacity;
+}
+@keyframes opacity {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+.col-form-label-sm {
+  margin-top: 8px;
+}
+/* .form-select,
+.form-control {
+  background-color: var(--light-purple);
+} */
+.btn-purple {
+  border-color: var(--purple);
+  color: var(--purple);
+}
+.btn-purple:hover {
+  background-color: var(--purple);
+  color: white;
+}
+h5 {
+  color: #666;
+}
+#formDeclarativa {
+  max-width: 500px;
+  margin: 20px auto;
+}
+.toggle-icon {
+  cursor: pointer;
+}
+.toolsTip {
+  position: relative;
+}
+.toolsTip::after {
+  content: "Elementos que pertenecen al indicador de preformace de seguridad activa";
+  background-color: #222;
+  color: white;
+  position: absolute;
+  left: 20px;
+  top: -20px;
+  width: 200px;
+  text-align: center;
+  border-radius: 10px;
+  padding: 10px;
+  display: none;
+}
+.toolsTip:hover.toolsTip::after{
+  display: block;
 }

@@ -1,112 +1,82 @@
-<div class="container-form mt-5" style="max-width: 500px; margin: auto;">
-    <h2>Salidas no conformes</h2>
-    <form class="row needs-validation g-1 " novalidate>
+<form class="row needs-validation g-1" novalidate id="formDeclarativa">
+    <h5>Planificación</h5>
+    <div class='col-12'>
+        <label for='proveedor' class='col-form-label col-form-label-sm'>Poveedor<span class='text-danger'> *</span></label>
+        <input type="number" class='form-control form-control-sm' id='proveedor' required>
+    </div>
+    <div class='col-12 show--fade'>
+        <label for='anular' class='col-form-label col-form-label-sm'>Anular<span class='text-danger'> *</span></label>
+        <select class='form-select form-select-sm ' id='anular' required></select>
+    </div>
+    <div class='col-12 show--fade'>
+        <label for='comentario_anulacion' class='col-form-label col-form-label-sm'>Comentario de anulación<span class='text-danger'>
+                *</span></label>
+        <textarea class='form-control form-control-sm' id='comentario_anulacion' required></textarea>
+    </div>
+    <div class='col-12 show--fade'>
+        <label for='requiere_acc' class='col-form-label col-form-label-sm'>¿Requiere acción correctiva?<span class='text-danger'> *</span></label>
+        <select class='form-select form-select-sm ' id='requiere_acc' required>
+        </select>
+    </div>
+    <div class='col-12 show--fade'>
+        <label for='justicacion_no_acc' class='col-form-label col-form-label-sm'>¿Por que no se aplica acción correctivo?<span class='text-danger'>
+                *</span></label>
+        <textarea class='form-control form-control-sm' id='justicacion_no_acc' required></textarea>
+    </div>
+    <div class='col-12 show--fade'>
+        <label for='causa' class='col-form-label col-form-label-sm'>Causa<span class='text-danger'>
+                *</span></label>
+        <textarea class='form-control form-control-sm' id='causa' required></textarea>
+    </div>
+    <div class='col-12 show--fade'>
+        <label for='accion_correctiva' class='col-form-label col-form-label-sm'>Acción Correctiva<span class='text-danger'>
+                *</span></label>
+        <input class='form-control form-control-sm' id='accion_correctiva' required/>
+    </div>
+    <div class='col-12'>
+        <label for='fecha_pazo' class='col-form-label col-form-label-sm'>Fecha plazo</em> <span
+                class='text-danger'> *</span></label>
+        <input type="date" id="fecha_pazo" class='form-control form-control-sm'>
+    </div>
+    <div class='col-12'>
+        <label for='fecha_impl' class='col-form-label col-form-label-sm'>Fecha implementación</em> <span
+                class='text-danger'> *</span></label>
+        <input type="date" id="fecha_impl" class='form-control form-control-sm'>
+    </div>
+    <div class='col-12 show--fade'>
+        <label for='comentarios_impl' class='col-form-label col-form-label-sm'>Comentario implementación <span
+            class='text-danger'> Opcional</span></label>
+        <textarea class='form-control form-control-sm' id='comentarios_impl'></textarea>
+    </div>
+    <div class='col-12 show--fade'>
+        <label for='met_verif_ef' class='col-form-label col-form-label-sm'>Metodología verificación de Eficacia <span
+            class='text-danger'> Opcional</span></label>
+        <textarea class='form-control form-control-sm' id='met_verif_ef'></textarea>
+    </div>
+    <div class='col-12 show--fade'>
+        <label for='resultado_ef' class='col-form-label col-form-label-sm'>Resultado de la verificación de eficacia<span class='text-danger'> *</span></label>
+        <select class='form-select form-select-sm ' id='resultado_ef' required>
+        </select>
+    </div>
+    <div class='col-12 show--fade'>
+        <label for='comentario_ef' class='col-form-label col-form-label-sm'>Comentario verificación de Eficacia <span
+            class='text-danger'> Opcional</span></label>
+        <textarea class='form-control form-control-sm' id='comentario_ef'></textarea>
+    </div>
+    <div class="row g-1 mt-4">
         <div class='col-12'>
-            <label for='asignado_a' class='col-form-label col-form-label-sm'>Asignado a<span
+            <h5>Responsable de tratamiento de la salida no conforme</h5>
+            <label for='responsable' class='col-form-label col-form-label-sm'>Asignar a:<span
                     class='text-danger'> *</span></label>
-            <select class='form-select form-select-sm' id='asignado_a'></select>
+            <input class="form-control form-control-sm" list="datalista_responsable" id="responsable">
+            <datalist id="datalista_responsable">
+                
+            </datalist>
         </div>
-        <div class="row g-1">
-            <h3>Fase: Gestión</h3>
-        <div class='col-12'>
-            <label for='anular' class='col-form-label col-form-label-sm'>Anular<span class='text-danger'>
-                    *</span></label>
-            <select class='form-select form-select-sm' id='anular'></select>
-        </div>
-        <div class='col-12'>
-            <label for='comentario_anulacion' class='col-form-label col-form-label-sm'>Comentario de
-                anulacion<span class='text-danger'> *</span></label>
-            <textarea class='form-control form-control-sm' id='comentario_anulacion'></textarea>
-        </div>
-        <div class='col-12'>
-            <label for='fecha_anulacion' class='col-form-label col-form-label-sm'>Fecha anulacion<span
-                    class='text-danger'> *</span></label>
-            <input class='form-control form-control-sm' type="date" id='fecha_anulacion' />
-        </div>
-        <div class='col-12'>
-            <label for='fecha_inicio' class='col-form-label col-form-label-sm'>Fecha inicio<span
-                    class='text-danger'> *</span></label>
-            <input class='form-control form-control-sm' type="date" id='fecha_inicio' />
-        </div>
-        <div class='col-12'>
-            <label for='causa' class='col-form-label col-form-label-sm'>Causa<span class='text-danger'>
-                    *</span></label>
-            <textarea class='form-control form-control-sm' id='causa'></textarea>
-        </div>
-        <div class='col-12'>
-            <label for='requiere_acc' class='col-form-label col-form-label-sm'>Requiere acción correctiva<span
-                    class='text-danger'> *</span></label>
-            <select class='form-select form-select-sm' id='requiere_acc'></select>
-        </div>
-        <div class='col-12'>
-            <label for='propuesta' class='col-form-label col-form-label-sm'>Propuesta<span class='text-danger'>
-                    *</span></label>
-            <textarea class='form-control form-control-sm' id='propuesta'></textarea>
-        </div>
-        <div class='col-12'>
-            <label for='fecha_plazo' class='col-form-label col-form-label-sm'>Fecha de prevista<span
-                    class='text-danger'> *</span></label>
-            <input class='form-control form-control-sm' type="date" id='fecha_plazo' />
+        <div class="col-12 mt-4">
+            <button class="btn btn-purple float-end" type="button" onclick="UI.handleSendNC(event)">Enviar</button>
         </div>
     </div>
-    <div class="row g-1">
-        <h3>Fase: Acción Correctiva</h3>
-        <div class='col-12'>
-            <label for='accion_correctiva' class='col-form-label col-form-label-sm'>Accion correctiva (AC)<span
-                    class='text-danger'> *</span></label>
-            <textarea class='form-control form-control-sm' id='accion_correctiva'></textarea>
-        </div>
-        <div class='col-12'>
-            <label for='fecha_ac' class='col-form-label col-form-label-sm'>Fecha AC<span class='text-danger'>
-                    *</span></label>
-            <input class='form-control form-control-sm' type="date" id='fecha_ac' />
-        </div>
-        <div class='col-12'>
-            <label for='met_verif_ef' class='col-form-label col-form-label-sm'>Metodología de verificación de
-                eficacia<span class='text-danger'> *</span></label>
-            <textarea class='form-control form-control-sm' id='met_verif_ef'></textarea>
-        </div>
-        <div class='col-12'>
-            <label for='responsable_ef' class='col-form-label col-form-label-sm'>Responsable verif. efic<span
-                    class='text-danger'> *</span></label>
-            <select class='form-select form-select-sm' id='responsable_ef'></select>
-        </div>
-        <div class='col-12'>
-            <label for='fecha_prev_ef' class='col-form-label col-form-label-sm'>Fecha prev. verif. efic.<span
-                    class='text-danger'> *</span></label>
-            <input class='form-control form-control-sm' type="date" id='fecha_prev_ef' />
-        </div>
-    </div>
-    <div class="row g-1">
-        <h3>Fase: Verificación de eficacia</h3>
-        <div class='col-12'>
-            <label for='resultado_ef' class='col-form-label col-form-label-sm'>Resultado<span
-                    class='text-danger'> *</span></label>
-            <select class='form-select form-select-sm' id='resultado_ef'></select>
-        </div>
-        <div class='col-12'>
-            <label for='comentario_ef' class='col-form-label col-form-label-sm'>Comentario<span
-                    class='text-danger'> *</span></label>
-            <textarea class='form-control form-control-sm' id='comentario_ef'></textarea>
-        </div>
-        <div class='col-12'>
-            <label for='fecha_ef' class='col-form-label col-form-label-sm'>Fecha verif. efic<span
-                    class='text-danger'> *</span></label>
-            <input class='form-control form-control-sm' type="date" id='fecha_ef' />
-        </div>
-    </div>
-    <div class="row g-1">
-        <h3>Status</h3>
-        <div class='col-12'>
-            <label for='fase' class='col-form-label col-form-label-sm'>Fase<span class='text-danger'>
-                    *</span></label>
-            <input class='form-control form-control-sm' id='fase' />
-        </div>
-        <div class='col-12'>
-            <label for='status' class='col-form-label col-form-label-sm'>Status<span class='text-danger'>
-                    *</span></label>
-            <input class='form-control form-control-sm' id='status' />
-        </div>
-    </div>
-    </form>
-</div>
+</form>
+
+

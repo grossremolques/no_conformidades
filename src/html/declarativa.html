@@ -1,105 +1,123 @@
-<form class="row needs-validation g-1 form" novalidate>
-    <h3>Fase: Declarativa</h3>
-    <h5>Difiniciones</h5>
-    <div class="row">
-
-    
+<form class="row needs-validation g-1" novalidate id="formDeclarativa">
+    <h4 class="text-center">Nueva no conformidad</h4>
+    <h5>Definiciones</h5>
     <div class='col-12'>
         <label for='tipo_desvio' class='col-form-label col-form-label-sm'>Tipo de desvío<span class='text-danger'> *</span></label>
-        <select class='form-select form-select-sm' onchange="" id='tipo_desvio' required>
+        <select class='form-select form-select-sm' onchange="Declaracion.tipoDesvio(event)" id='tipo_desvio' required>
         </select>
     </div>
-    <div class='col-12'>
+    <div class='col-12 show--fade'>
         <label for='documento' class='col-form-label col-form-label-sm'>Documento<span class='text-danger'> *</span></label>
-        <select class='form-select form-select-sm ' id='documento'></select>
+        <select class='form-select form-select-sm ' id='documento' required></select>
     </div>
-    <div class='col-12'>
-        <label for='pieza' class='col-form-label col-form-label-sm'>Pieza<span class='text-danger'>
+    <div class='col-12 show--fade'>
+        <label for='procedimiento' class='col-form-label col-form-label-sm'>Procedimiento<span class='text-danger'> *</span></label>
+        <select class='form-select form-select-sm ' id='procedimiento' required>
+        </select>
+    </div>
+    <div class='col-12 show--fade'>
+        <label for='pieza' class='col-form-label col-form-label-sm'>Pieza (código o descripción)<span class='text-danger'>
                 *</span></label>
-        <input class='form-control form-control-sm' id='pieza' />
+        <input class='form-control form-control-sm' id='pieza' required/>
     </div>
     <div class='col-12'>
-        <label for='pnc' class='col-form-label col-form-label-sm'>Producto No Conforme <em>(Preformance de seguridad activa)</em> <span
+        <label for='pnc' class='col-form-label col-form-label-sm'>Producto No Conforme <span class="toolsTip"><i class="bi bi-question-diamond-fill"></i></span> <span
                 class='text-danger'> *</span></label>
-        <select class='form-select form-select-sm' id='pnc'></select>
+        <select class='form-select form-select-sm' id='pnc' required></select>
     </div>
     <div class='col-12'>
         <label for='producto' class='col-form-label col-form-label-sm'>Producto<span
                 class='text-danger'>
                 *</span></label>
-        <input class='form-control form-control-sm' id='producto' />
-    </div>
-    <div class='col-12'>
-        <label for='manufactura' class='col-form-label col-form-label-sm'>Manufactura<span
-                class='text-danger'> *</span></label>
-        <select class='form-select form-select-sm' id='manufactura'></select>
+        <input class='form-control form-control-sm' id='producto' required/>
     </div>
     
     <div class='col-12'>
-        <label for='proveedor' class='col-form-label col-form-label-sm'>Proveedor<span
-                class='text-danger'>
-                *</span></label>
-        <input class='form-control form-control-sm' type="number" id='proveedor' />
-    </div>
-    <div class='col-12'>
-        <label for='origen' class='col-form-label col-form-label-sm'>Origen<span class='text-danger'>
-                *</span></label>
-        <select class='form-select form-select-sm' id='origen' required></select>
-    </div>
-    <div class='col-12'>
-        <label for='cliente' class='col-form-label col-form-label-sm'>Cliente<span class='text-danger'>
-                *</span></label>
-        <input class='form-control form-control-sm' type="number" id='cliente'/>
-    </div>
-    <div class='col-12'>
-        <label for='trazabilidad' class='col-form-label col-form-label-sm'>Trazabilidad<span
+        <label for='manufactura' class='col-form-label col-form-label-sm'>Manufactura<span
                 class='text-danger'> *</span></label>
-        <input class='form-control form-control-sm' id='trazabilidad' />
-    </div>
-    <div class='col-12'>
-        <label for='desvio' class='col-form-label col-form-label-sm'>Desvío<span class='text-danger'>
-                *</span></label>
-        <textarea class='form-control form-control-sm' id='desvio' required></textarea>
-    </div>
-    <div class='col-12'>
-        <label for='contencion' class='col-form-label col-form-label-sm'>Contención</label>
-        <textarea class='form-control form-control-sm' id='contencion'></textarea>
-    </div>
-    <div class='col-12'>
-        <label for='fecha_prog_at' class='col-form-label col-form-label-sm'>Fecha programada de
-            atención<span class='text-danger'> *</span></label>
-        <input class='form-control form-control-sm' type="date" id='fecha_prog_at'/>
-    </div>
-    <div class='col-12'>
-        <label for='id_ot' class='col-form-label col-form-label-sm'>ID Orden de trabajo<span
-                class='text-danger'> *</span></label>
-        <input class='form-control form-control-sm' type="number" id='id_ot' />
+        <select class='form-select form-select-sm' id='manufactura' required></select>
     </div>
     <div class="row g-1">
-        <h4>Datos de quien genera la NC</h4>
+        <div class='col-12 show--fade'>
+            <label for='origen' class='col-form-label col-form-label-sm'>Origen<span class='text-danger'>
+                    *</span></label>
+            <select class='form-select form-select-sm' id='origen' onchange="Declaracion.tipoOrigen(event)" required></select>
+        </div>
+        <div class='col-12 show--fade'>
+            <label for='cliente' class='col-form-label col-form-label-sm'>Cliente<span class='text-danger'>
+                    *</span></label>
+            <input class='form-control form-control-sm' type="number" id='cliente'/>
+        </div>
+        <div class='col-12 show--fade'>
+            <label for='trazabilidad' class='col-form-label col-form-label-sm'>Trazabilidad<span
+                    class='text-danger'> (Si no posee la trazabilidad, ingrese <strong>No aplica</strong>)</span></label>
+            <input class='form-control form-control-sm' id='trazabilidad' required/>
+        </div>
+        <div class='col-12 show--fade'>
+            <label for='desvio' class='col-form-label col-form-label-sm'>Desvío<span class='text-danger'>
+                    *</span></label>
+            <textarea class='form-control form-control-sm' id='desvio' required></textarea>
+        </div>
+        <div class='col-12 show--fade'>
+            <label for='tipo_contencion' class='col-form-label col-form-label-sm'>Tipo de contención <span
+                    class='text-danger'> *</span></label>
+            <select class='form-select form-select-sm' id='tipo_contencion'></select>
+        </div>
+        <div class='col-12 show--fade'>
+            <label for='contencion' class='col-form-label col-form-label-sm'>Contención <span
+                class='text-danger'> Opcional</span></label>
+            <textarea class='form-control form-control-sm' id='contencion'></textarea>
+        </div>
+        <div class='col-12 show--fade'>
+            <label for='fecha_prog_at' class='col-form-label col-form-label-sm'>Fecha programada de
+                atención<span class='text-danger'> *</span></label>
+            <input class='form-control form-control-sm' type="date" id='fecha_prog_at'/>
+        </div>
+        <div class="col-12 mt-4 d-none btn-next">
+            <button class="btn btn-purple float-end " type="button" onclick="Declaracion.next()">Siguiente</button>
+        </div>
+    </div>
+    <div class="row g-1 mt-4 second-part">
+        <h5>Quien y Donde se genera</h5>
         <div class='col-12'>
             <label for='registrado_por' class='col-form-label col-form-label-sm'>Registrado por<span
                     class='text-danger'> *</span></label>
-            <input class="form-control form-control-sm" list="datalista_registrado_por" id="registrado_por">
+            <input class="form-control form-control-sm" list="datalista_registrado_por" id="registrado_por" required>
             <datalist id="datalista_registrado_por">
 
             </datalist>
         </div>
-        <div class='col-12'>
+        <div class='col-6'>
             <label for='area' class='col-form-label col-form-label-sm'>Área<span class='text-danger'>
                     *</span></label>
-            <select class='form-select form-select-sm' id='area'></select>
+            <select class='form-select form-select-sm' id='area' onchange="UI.handleLoadSectores(event)" required></select>
         </div>
-        <div class='col-12'>
+        <div class='col-6'>
             <label for='sector' class='col-form-label col-form-label-sm'>Sector<span class='text-danger'>
                     *</span></label>
-            <select class='form-select form-select-sm' id='sector'></select>
+            <select class='form-select form-select-sm' id='sector' required></select>
         </div>
-        <div class='col-12'>
+        <div class='col-12' hidden>
             <label for='subsector' class='col-form-label col-form-label-sm'>Subsector<span
                     class='text-danger'>
                     *</span></label>
             <select class='form-select form-select-sm' id='subsector'></select>
         </div>
+    <!-- </div>
+    <div class="row g-1 mt-4"> -->
+        <div class='col-12 d-none'>
+            <h5>Responsable del tratamiento</h5>
+            <label for='responsable' class='col-form-label col-form-label-sm'>Asignar a:<span
+                    class='text-danger'> *</span></label>
+            <input class="form-control form-control-sm" list="datalista_responsable" id="responsable">
+            <datalist id="datalista_responsable">
+                
+            </datalist>
+        </div>
+        <div class="col-12 mt-4">
+            <button class="btn btn-purple float-end" type="button" onclick="Declaracion.save(event)">Enviar</button>
+        </div>
     </div>
 </form>
+
+

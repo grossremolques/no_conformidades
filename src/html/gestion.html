@@ -1,0 +1,234 @@
+<div class="container-form mt-5" style="max-width: 900px; margin: auto;">
+    <h4>Gestión de Salidas no conformes</h4>
+    <div class="row g-1 mt-3">
+        <div class="col">
+            <div class="form-floating mb-3">
+                <input type="search" class="form-control" id="floatingInput" onchange="Gestion.loadDataById(event)">
+                <label for="floatingInput">ID No conformidad</label>
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-floating">
+                <input type="text" class="form-control" id="floatingPassword" readonly>
+                <label for="floatingPassword">Status</label>
+            </div>
+        </div>
+    </div>
+    <form class="row needs-validation g-1" novalidate>
+
+        <div class="row g-1 mt-4">
+            <h5>Definiciones</h5>
+            <div class='col-12 col-md-3'>
+                <label for='tipo_desvio' class='col-form-label col-form-label-sm'>Tipo de desvío<span
+                        class='text-danger'>
+                        *</span></label>
+                <select class='form-select form-select-sm' id='tipo_desvio' required>
+                </select>
+            </div>
+            <div class='col-12 col-md-3 show--fade'>
+                <label for='documento' class='col-form-label col-form-label-sm'>Documento<span class='text-danger'>
+                        *</span></label>
+                <select class='form-select form-select-sm ' id='documento' required></select>
+            </div>
+            <div class='col-12 col-md-3 show--fade'>
+                <label for='procedimiento' class='col-form-label col-form-label-sm'>Procedimiento<span
+                        class='text-danger'>
+                        *</span></label>
+                <select class='form-select form-select-sm ' id='procedimiento' required>
+                </select>
+            </div>
+            <div class='col-12 col-md-3 show--fade'>
+                <label for='pieza' class='col-form-label col-form-label-sm'>Pieza (Código)<span class='text-danger'>
+                        *</span></label>
+                <input class='form-control form-control-sm' id='pieza' required />
+            </div>
+            <div class='col-12 col-md-3'>
+                <label for='pnc' class='col-form-label col-form-label-sm'>Producto No Conforme <i
+                        class="bi bi-question-diamond-fill toolsTip"></i> <span class='text-danger'> *</span></label>
+                <select class='form-select form-select-sm' id='pnc' required></select>
+            </div>
+            <div class='col-12 col-md-3'>
+                <label for='producto' class='col-form-label col-form-label-sm'>Producto<span class='text-danger'>
+                        *</span></label>
+                <input class='form-control form-control-sm' id='producto' required />
+            </div>
+            <div class='col-12 col-md-3'>
+                <label for='manufactura' class='col-form-label col-form-label-sm'>Manufactura<span class='text-danger'>
+                        *</span></label>
+                <select class='form-select form-select-sm' id='manufactura' required></select>
+            </div>
+            <div class='col-12 col-md-3 show--fade'>
+                <label for='origen' class='col-form-label col-form-label-sm'>Origen<span class='text-danger'>
+                        *</span></label>
+                <select class='form-select form-select-sm' id='origen' onchange="" required></select>
+            </div>
+            <div class='col-2 show--fade'>
+                <label for='cliente' class='col-form-label col-form-label-sm'>Cod. Cliente<span class='text-danger'>
+                        *</span></label>
+                <input class='form-control form-control-sm' type="number" id='cliente' />
+            </div>
+            <div class='col-8 show--fade'>
+                <label for='nombrecliente' class='col-form-label col-form-label-sm'>Cliente/Razón social<span
+                        class='text-danger'>
+                        *</span></label>
+                <input class='form-control form-control-sm' type="text" id='nombrecliente' readonly />
+            </div>
+            <div class='col-2 show--fade'>
+                <label for='trazabilidad' class='col-form-label col-form-label-sm'>Trazabilidad<span
+                        class='text-danger'>
+                        *</span></label>
+                <input class='form-control form-control-sm' id='trazabilidad' />
+            </div>
+            <div class='col-12 show--fade'>
+                <label for='desvio' class='col-form-label col-form-label-sm'>Desvío<span class='text-danger'>
+                        *</span></label>
+                <textarea class='form-control form-control-sm' id='desvio' required></textarea>
+            </div>
+            <div class='col-3 show--fade'>
+                <label for='tipo_contencion' class='col-form-label col-form-label-sm'>Tipo de contención <span
+                        class='text-danger'> *</span></label>
+                <select class='form-select form-select-sm' id='tipo_contencion'></select>
+            </div>
+            <div class='col-9 show--fade'>
+                <label for='contencion' class='col-form-label col-form-label-sm'>Contención <span class='text-danger'>
+                        *</span></label>
+                <textarea class='form-control form-control-sm' id='contencion' rows="1"></textarea>
+            </div>
+            <div class='col-3 show--fade'>
+                <label for='fecha_prog_at' class='col-form-label col-form-label-sm'>Fecha programada de
+                    atención<span class='text-danger'> *</span></label>
+                <input class='form-control form-control-sm' type="date" id='fecha_prog_at' />
+            </div>
+        </div>
+        <div class="row g-1 mt-4">
+            <h5>Quien y Donde se genera</h5>
+            <div class='col-12 col-md-4'>
+                <label for='registrado_por' class='col-form-label col-form-label-sm'>Registrado por<span
+                        class='text-danger'> *</span></label>
+                <input class="form-control form-control-sm" list="datalista_registrado_por" id="registrado_por"
+                    required>
+                <datalist id="datalista_registrado_por">
+
+                </datalist>
+            </div>
+            <div class='col-12 col-md-4'>
+                <label for='area' class='col-form-label col-form-label-sm'>Área<span class='text-danger'>
+                        *</span></label>
+                <select class='form-select form-select-sm' id='area' onchange="UI.handleLoadSectores(event)"
+                    required></select>
+            </div>
+            <div class='col-12 col-md-4'>
+                <label for='sector' class='col-form-label col-form-label-sm'>Sector<span class='text-danger'>
+                        *</span></label>
+                <select class='form-select form-select-sm' id='sector' required></select>
+            </div>
+            <div class='col-12' hidden>
+                <label for='subsector' class='col-form-label col-form-label-sm'>Subsector<span class='text-danger'>
+                        *</span></label>
+                <select class='form-select form-select-sm' id='subsector'></select>
+            </div>
+        </div>
+        <div class="row g-1 mt-4">
+            <h5>Responsable del tratamiento</h5>
+            <div class='col-12'>
+                <label for='responsable' class='col-form-label col-form-label-sm'>Asignar a:<span class='text-danger'>
+                        *</span></label>
+                <input class="form-control form-control-sm" list="datalista_responsable" id="responsable">
+                <datalist id="datalista_responsable">
+
+                </datalist>
+            </div>
+        </div>
+        <div class="row g-1 mt-4">
+            <h5>Planificación</h5>
+            <div class='col-12 col-md-2'>
+                <label for='proveedor' class='col-form-label col-form-label-sm'>Cód. Poveedor<span class='text-danger'>
+                        *</span></label>
+                <input type="number" class='form-control form-control-sm' id='proveedor' required>
+            </div>
+            <div class='col-12 col-md-4 show--fade'>
+                <label for='nombre-proveedor' class='col-form-label col-form-label-sm'>Razón social<span
+                        class='text-danger'>
+                        *</span></label>
+                <textarea class='form-control form-control-sm' id='nombre-proveedor' required rows="1"></textarea>
+            </div>
+            <div class='col-12 col-md-1 show--fade'>
+                <label for='anular' class='col-form-label col-form-label-sm'>Anular<span class='text-danger'>
+                        *</span></label>
+                <select class='form-select form-select-sm ' id='anular' required></select>
+            </div>
+            <div class='col-12 col-md-5 show--fade'>
+                <label for='comentario_anulacion' class='col-form-label col-form-label-sm'>Comentario de anulación<span
+                        class='text-danger'>
+                        *</span></label>
+                <textarea class='form-control form-control-sm' id='comentario_anulacion' required rows="1" disabled></textarea>
+            </div>
+            <div class='col-12 col-md-2 show--fade'>
+                <label for='requiere_acc' class='col-form-label col-form-label-sm'>¿Req. AC?<span
+                        class='text-danger'> *</span></label>
+                <select class='form-select form-select-sm ' id='requiere_acc' required>
+                </select>
+            </div>
+            <div class='col-12 col-md-10 show--fade'>
+                <label for='justicacion_no_acc' class='col-form-label col-form-label-sm'>¿Por que no se aplica acción
+                    correctivo?<span class='text-danger'>
+                        *</span></label>
+                <textarea class='form-control form-control-sm' id='justicacion_no_acc' required rows="1"></textarea>
+            </div>
+        </div>
+        <div class="row g-1 mt-4">
+            <h5>Analisis y Acción correctiva</h5>
+            <div class='col-12 show--fade'>
+                <label for='causa' class='col-form-label col-form-label-sm'>Causa<span class='text-danger'>
+                        *</span></label>
+                <textarea class='form-control form-control-sm' id='causa' required></textarea>
+            </div>
+            <div class='col-9 show--fade'>
+                <label for='accion_correctiva' class='col-form-label col-form-label-sm'>Acción Correctiva<span
+                        class='text-danger'>
+                        *</span></label>
+                <textarea class='form-control form-control-sm' id='accion_correctiva' required rows="1"></textarea>
+            </div>
+            <div class='col-3'>
+                <label for='fecha_pazo' class='col-form-label col-form-label-sm'>Fecha plazo</em> <span
+                        class='text-danger'>
+                        *</span></label>
+                <input type="date" id="fecha_pazo" class='form-control form-control-sm'>
+            </div>
+            <div class='col-3'>
+                <label for='fecha_impl' class='col-form-label col-form-label-sm'>Fecha implementación</em> <span
+                        class='text-danger'> *</span></label>
+                <input type="date" id="fecha_impl" class='form-control form-control-sm'>
+            </div>
+            <div class='col-9 show--fade'>
+                <label for='comentarios_impl' class='col-form-label col-form-label-sm'>Comentario implementación <span
+                        class='text-danger'> *</span></label>
+                <textarea class='form-control form-control-sm' id='comentarios_impl' rows="1"></textarea>
+            </div>
+        </div>
+        <div class="row g-1 mt-4">
+            <h5>Verificación de eficacia</h5>
+            <div class='col-12 show--fade'>
+                <label for='met_verif_ef' class='col-form-label col-form-label-sm'>Metodología verificación de Eficacia
+                    <span class='text-danger'> *</span></label>
+                <textarea class='form-control form-control-sm' id='met_verif_ef'></textarea>
+            </div>
+            <div class='col-12 col-md-4 show--fade'>
+                <label for='resultado_ef' class='col-form-label col-form-label-sm'>Resultado de la verificación de
+                    eficacia<span class='text-danger'> *</span></label>
+                <select class='form-select form-select-sm ' id='resultado_ef' required>
+                </select>
+            </div>
+            <div class='col-12 col-md-8 show--fade'>
+                <label for='comentario_ef' class='col-form-label col-form-label-sm'>Comentario verificación de Eficacia
+                    <span class='text-danger'> *</span></label>
+                <textarea class='form-control form-control-sm' id='comentario_ef' rows="1"></textarea>
+            </div>
+        </div>
+        <div class="row g-1 my-4">
+            <div class="col-12">
+                <button class="btn btn-purple float-end" type="button" onclick="">Guardar</button>
+            </div>
+        </div>
+    </form>
+</div>
