@@ -54,12 +54,12 @@ class Declaracion {
     this.noRequiredlElement('trazabilidad')
     document.querySelector('.second-part').classList.add('d-none')
   }
-  static showElements(elem) {
+  static showElements(elem,value = '') {
     const input = document.getElementById(elem);
     const node = input.parentElement;
     //input.removeAttribute('disabled')
     node.classList.remove("d-none");
-    input.value = "";
+    input.value = value;
   }
   static hideElements(elem, value = 'No aplica') {
     const input = document.getElementById(elem);
@@ -97,6 +97,12 @@ class Declaracion {
     this.showElements("documento");
     this.showElements("origen");
   }
+  static async setResponsable(event) {
+    let documento = event.target.value;
+    let responsable = await Atributo.getResposnableByDocumento(documento);
+    document.getElementById('responsable').value = responsable
+
+  }
   static settingProducto() {
     let pnc = document.getElementById("pnc");
     this.resetDeclaracion();
@@ -128,8 +134,7 @@ class Declaracion {
         this.settingOrigenDefault();
     }
   }
-  static settingCliente() {
-    //let tipo_contencion = document.getElementById("tipo_contencion");
+  static async settingCliente() {
     this.showElements("cliente");
     this.requiredlElement("cliente");
     this.showElements("fecha_prog_at");
@@ -138,7 +143,8 @@ class Declaracion {
     this.showElements("desvio");
     this.showElements("contencion");
     this.showElements("tipo_contencion",'Turno (solo clientes)');
-    //tipo_contencion.value = "Turno (solo clientes)";
+    let responsable = await Atributo.getResposnableByReclCliente()
+    this.showElements("responsable",responsable);
     document.querySelector('.btn-next').classList.remove('d-none')
   }
   static settingOrigenDefault() {
