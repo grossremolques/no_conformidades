@@ -13,6 +13,24 @@ class Atributo {
       console.error("Error: ", e);
     }
   }
+  static async getResposnableByReclCliente() {
+    try {
+      let atributos = await Atributo.getAtributos();
+      let reclamoCliente = atributos.find(item => item.origen === 'Reclamo de cliente');
+      return reclamoCliente.resposable_x_origen
+    } catch (e) {
+      console.error("Error: ", e);
+    }
+  }
+  static async getResposnableByDocumento(documento) {
+    try {
+      let atributos = await Atributo.getAtributos();
+      let reclamoCliente = atributos.find(item => item.documento === documento);
+      return reclamoCliente.resposable_x_documento
+    } catch (e) {
+      console.error("Error: ", e);
+    }
+  }
 }
 class UI_Atributo {
   static loadAtributo(atributo, idInput) {

@@ -67,9 +67,9 @@ class Cliente {
       let isCodAvailable = await this.isCodAvailable(Data.id);
       if (!isCodAvailable) {
         let clientes = await this.getClientes();
-        let row = clientes.findIndex(item => item.id==Data.id) + 2
+        let row = clientes.findIndex((item) => item.id == Data.id) + 2;
         let range = `Registro!A${row}:ZZZ`;
-        await this.updateCliente(Data, range)
+        await this.updateCliente(Data, range);
         //Actualizar
       } else {
         await this.createCliente(Data);
@@ -83,14 +83,14 @@ class Cliente {
     try {
       let headers = await ApiGoogleSheet.getHeaders(SheetClientes, SS_Clientes);
       newCliente = objectToArray(newCliente, headers);
-      return newCliente
+      return newCliente;
     } catch (e) {
       console.log(e);
     }
   }
   static async createCliente(Data) {
     try {
-      let newCliente = await this.createDataCliente(Data)
+      let newCliente = await this.createDataCliente(Data);
       await ApiGoogleSheet.postData(SheetClientes, [newCliente], SS_Clientes);
     } catch (e) {
       console.log(e);
@@ -98,8 +98,30 @@ class Cliente {
   }
   static async updateCliente(Data, range) {
     try {
-        let DataCliente = await this.createDataCliente(Data);
-        await ApiGoogleSheet.updateRow(SS_Clientes,range,DataCliente)
+      let DataCliente = await this.createDataCliente(Data);
+      await ApiGoogleSheet.updateRow(SS_Clientes, range, DataCliente);
+    } catch (e) {
+      console.log(e);
+    }
+  }
+  static async getName(event) {
+    let cod = event.target.value
+    try {
+      let cliente = await this.getClienteByCodigo(cod);
+      let input = document.getElementById('nameClient');
+      if(cliente) {
+        input.setAttribute('class','form-text')
+        input.classList.add('bg-success-subtle')
+        input.innerHTML = `<i class="bi bi-person-check-fill"></i> ${cliente.razon_social}`
+      }
+      else {
+        input.setAttribute('class','form-text')
+        input.classList.add('bg-danger-subtle')
+        input.innerHTML = `<i class="bi bi-person-fill-slash"></i> Cliente no encontrado`
+        event.target.value = ""
+      }
+      
+      
     } catch (e) {
       console.log(e);
     }
